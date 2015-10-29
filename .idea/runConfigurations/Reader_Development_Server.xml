@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Reader Development Server" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/opt/nodes/4.1.1/bin/node" path-to-js-file="servers/dev.js" working-dir="$PROJECT_DIR$/reader">
+    <method />
+  </configuration>
+</component>
