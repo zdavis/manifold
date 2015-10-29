@@ -1,0 +1,7 @@
+@mixin button {
+  @include font-head;
+  text-transform: uppercase;
+  font-size: $type10;
+  font-weight: $extrabold;
+  cursor: pointer;
+}

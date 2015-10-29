@@ -1,6 +1,14 @@
 ### Bundler Config ###
 /.bundle
 
+### Logs and Temp Files ###
+/log/*
+/tmp/*
+!/tmp/pids/.keep
+!/log/.keep
+!/tmp/.keep
+/npm-debug.log
+
 ### IntelliJ ###
 
 # User-specific stuff:
@@ -18,3 +26,14 @@
 # File-based project format:
 *.ipr
 *.iws
+
+### Ignore user content ###
+/public/system
+/epubs
+
+### Ignore secrets ###
+config/secrets.yml
+
+### Ignore yardoc ###
+.yardoc
+doc
