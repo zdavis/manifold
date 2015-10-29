@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-setup_scripts = ['dependencies.rb','link.rb','migrate.rb']
+setup_scripts = ['dependencies.rb','link.rb','api_install.rb','migrate.rb']
 
 script_dir = File.expand_path(File.dirname(__FILE__))
 Dir.chdir(script_dir ) {
