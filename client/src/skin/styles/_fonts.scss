@@ -1,0 +1,18 @@
+// Fonts
+// -----
+
+// Do your @font-face embedding here, in the privacy of your own partial
+
+// Mixins
+// --------------------------
+
+
+
+@mixin font-body($variant: regular) {
+  font-family: "Merriweather", 'Hoefler Text', Garamond, 'Times New Roman', serif;
+}
+
+@mixin font-head {
+  font-family: "Merriweather Sans", Calibri, sans-serif;
+  font-weight: $regular;
+}
