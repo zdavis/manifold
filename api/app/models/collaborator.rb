@@ -2,4 +2,5 @@
 class Collaborator < ActiveRecord::Base
   belongs_to :text
   belongs_to :maker
+  belongs_to :project
 end
