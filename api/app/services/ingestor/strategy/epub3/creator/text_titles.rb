@@ -15,8 +15,9 @@ module Ingestor
             titles = title_nodes.each_with_index.map do |title_node, index|
               node_inspector = Inspector::Metadata.new(title_node, @metadata_node)
               attr = defaults(DEFAULT_ATTRIBUTES, attributes(node_inspector, index))
-              existing_title = check_for_existing(existing, {value: attr[:value]})
-              title = existing_title || TextTitle.create(defaults(DEFAULT_ATTRIBUTES, attr))
+              existing_title = check_for_existing(existing, value: attr[:value])
+              attr = defaults(DEFAULT_ATTRIBUTES, attr)
+              title = existing_title || TextTitle.create(attr)
               info "services.ingestor.strategy.epub3.log.new_title", title: title.value
               title
             end

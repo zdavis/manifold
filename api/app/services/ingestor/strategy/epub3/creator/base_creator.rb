@@ -14,18 +14,14 @@ module Ingestor
           end
 
           def check_for_existing(existing, compare_attributes)
-            unless !existing.nil? && existing.respond_to?(:to_a)
-              return nil
-            end
+            return nil unless !existing.nil? && existing.respond_to?(:to_a)
             existing = existing.to_a.find do |model|
               compare_attributes.each do |key, value|
-                if model.send(key) != value
-                  false
-                end
+                return false if model.send(key) != value
                 true
               end
             end
-            return existing
+            existing
           end
 
           def defaults(defaults, attributes)

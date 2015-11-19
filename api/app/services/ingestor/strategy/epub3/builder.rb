@@ -93,7 +93,8 @@ module Ingestor
 
         def update_text_sections!(text)
           creator = Creator::TextSections.new(@logger, @inspector.metadata_node)
-          text_sections = creator.create(@inspector.spine_item_nodes, @inspector, text, text.text_sections)
+          text_sections = creator.create(@inspector.spine_item_nodes, @inspector,
+                                         text, text.text_sections)
           text.text_sections.replace(text_sections.reject(&:nil?))
         end
 
@@ -138,7 +139,8 @@ module Ingestor
 
         def update_contributors!(text)
           creator = Creator::Makers.new(@logger, @inspector.metadata_node)
-          makers = creator.create(@inspector.contributor_nodes, text.contributors, "contributor")
+          makers = creator.create(@inspector.contributor_nodes, text.contributors,
+                                  "contributor")
           text.contributors.replace(makers)
         end
 
