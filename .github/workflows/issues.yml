@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: "zdavis/filter-event-action@master"
+      - uses: "zdavis/issue-filter-action@master"
         env:
           DEBUG: true
         with:
-          args: '"event.issue.labels.find(function(label) { return label.name === "bug" })"'
+          labels: ["bug"]
       - uses: derekprior/add-autoresponse@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
