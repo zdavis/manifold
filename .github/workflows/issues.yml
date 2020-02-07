@@ -14,6 +14,7 @@ jobs:
         id: labels
         with:
           labels: "out of scope"
+          type: "all"
       - uses: zdavis/add-autoresponse@master
         if: steps.labels.outputs.match == 'true'
         env:
@@ -35,6 +36,7 @@ jobs:
         id: labels
         with:
           labels: "feature, needs funding"
+          type: "all"
       - uses: zdavis/add-autoresponse@master
         if: steps.labels.outputs.match == 'true'
         env:
@@ -56,6 +58,7 @@ jobs:
         id: labels
         with:
           labels: "feature, accepted"
+          type: "all"
       - uses: zdavis/add-autoresponse@master
         if: steps.labels.outputs.match == 'true'
         env:
@@ -79,6 +82,7 @@ jobs:
         id: labels
         with:
           labels: "feature, planned"
+          type: "all"
       - uses: zdavis/add-autoresponse@master
         if: steps.labels.outputs.match == 'true'
         env:
