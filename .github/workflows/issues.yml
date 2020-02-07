@@ -13,7 +13,7 @@ jobs:
         env:
           DEBUG: true
         with:
-          args: ${{event.issue.labels.find(function(label) { return label.name === "bug" })}}
+          args: 'event.issue.labels.find(function(label) { return label.name === "bug" })'
       - uses: derekprior/add-autoresponse@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
