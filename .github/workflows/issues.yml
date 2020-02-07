@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: "dschep/filter-event-action@master"
         with:
-          args: "console.log(event)"
+          args: "event.deleted"
       - uses: derekprior/add-autoresponse@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
