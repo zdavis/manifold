@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: "dschep/filter-event-action@master"
+        args: "event.label.name == 'bug'"
       - uses: derekprior/add-autoresponse@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
