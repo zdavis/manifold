@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: "dschep/filter-event-action@master"
+      - uses: "zdavis/filter-event-action@master"
         env:
           DEBUG: true
         with:
