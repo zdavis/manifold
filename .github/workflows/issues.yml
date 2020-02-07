@@ -20,5 +20,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           respondableId: ${{ github.event.issue.node_id }}
-          response: "Test response test response!"
+          response: "This issue was a bug issue."
           author: ${{ github.event.issue.user.login }}
