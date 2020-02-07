@@ -10,11 +10,12 @@ jobs:
 
     steps:
       - uses: "zdavis/issue-filter-action@master"
-        env:
-          DEBUG: true
+        id: label_check
         with:
+          debug: true
           labels: "bug"
       - uses: derekprior/add-autoresponse@master
+        if: steps.label_check.outputs.match == true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
