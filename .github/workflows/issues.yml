@@ -13,7 +13,8 @@ jobs:
         env:
           DEBUG: true
         with:
-          labels: ["bug"]
+          labels:
+            - bug
       - uses: derekprior/add-autoresponse@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
