@@ -1,4 +1,4 @@
-name: Greet Everyone
+name: Issue Autoresponder
 # This workflow is triggered on pushes to the repository.
 on:
   issues:
@@ -13,7 +13,7 @@ jobs:
         env:
           DEBUG: true
         with:
-          args: "event.issue.labels.find((label) => label.name === 'bug')"
+          args: "event.issue.labels.find(function(label) { return label.name === 'bug';})"
       - uses: derekprior/add-autoresponse@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
