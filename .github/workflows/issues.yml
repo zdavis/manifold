@@ -2,7 +2,7 @@ name: Issue Autoresponder
 # This workflow is triggered on pushes to the repository.
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
 
 jobs:
 
