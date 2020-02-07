@@ -5,7 +5,8 @@ on:
     types: [opened]
 
 jobs:
-  auto-response:
+
+  auto-reply-bug:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,5 +20,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           respondableId: ${{ github.event.issue.node_id }}
-          response: "This issue was a bug issue."
+          response: "This issue is a bug."
+          author: ${{ github.event.issue.user.login }}
+
+  auto-reply-feature:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: "zdavis/issue-filter-action@master"
+        id: labels
+        with:
+          labels: "bug"
+      - uses: derekprior/add-autoresponse@master
+        if: steps.labels.outputs.match == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          respondableId: ${{ github.event.issue.node_id }}
+          response: "This issue is a feature."
           author: ${{ github.event.issue.user.login }}
