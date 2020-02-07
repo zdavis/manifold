@@ -30,7 +30,7 @@ jobs:
       - uses: "zdavis/issue-filter-action@master"
         id: labels
         with:
-          labels: "bug"
+          labels: "feature"
       - uses: derekprior/add-autoresponse@master
         if: steps.labels.outputs.match == 'true'
         env:
