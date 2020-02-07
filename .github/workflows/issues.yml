@@ -12,6 +12,7 @@ jobs:
       - uses: "zdavis/issue-filter-action@master"
         id: labels
         with:
+          debug: ${{ false }}
           labels: "bug"
       - uses: derekprior/add-autoresponse@master
         if: steps.labels.outputs.match == true
