@@ -10,6 +10,8 @@ jobs:
 
     steps:
       - uses: "dschep/filter-event-action@master"
+        env:
+          DEBUG: true
         with:
           args: "event.label.name == 'bug'"
       - uses: derekprior/add-autoresponse@master
