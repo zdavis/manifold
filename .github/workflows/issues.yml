@@ -31,7 +31,7 @@ jobs:
         id: labels
         with:
           labels: "feature"
-      - uses: derekprior/add-autoresponse@master
+      - uses: zdavis/add-autoresponse@master
         if: steps.labels.outputs.match == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
