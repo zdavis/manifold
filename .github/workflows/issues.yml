@@ -8,7 +8,7 @@ jobs:
   issue-auto-reply:
     runs-on: ubuntu-latest
     steps:
-      - uses: "ManifoldScholar/issue-autorespond-action"
+      - uses: "ManifoldScholar/issue-autorespond-action@master"
         with:
           config: |
             {
