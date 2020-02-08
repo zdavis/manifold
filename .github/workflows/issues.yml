@@ -8,24 +8,26 @@ jobs:
   issue-auto-reply:
     runs-on: ubuntu-latest
     steps:
-      - uses: "ManifoldScholar/issue-autorespond-action@master"
+      - uses: "ManifoldScholar/issue-autorespond-action@zd/dev"
+        id: "issue-autorespond"
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
         with:
           config: |
-            {
-              "bug": {
+            [
+              {
+                "name": "bug",
                 "require": ["bug"],
                 "message": "bug_message.md",
                 "close": false
               },
-              "feature, not in scope": {
+              {
+                "name": "feature, not in scope",
                 "require": ["out of scope"],
                 "message": "out_of_scope.md",
                 "close": true
               }
-            }
-        id: "issue-autorespond"
-        env:
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+            ]
 
 
 
