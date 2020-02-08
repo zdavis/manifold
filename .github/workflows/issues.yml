@@ -5,93 +5,117 @@ on:
     types: [opened, labeled]
 
 jobs:
-
-  auto-reply-out-of-scope:
+  issue-auto-reply:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: "zdavis/issue-filter-action@master"
-        id: labels
+      - uses: "ManifoldScholar/issue-autorespond-action"
         with:
-          labels: "out of scope"
-          type: "all"
-      - uses: zdavis/add-autoresponse@master
-        if: steps.labels.outputs.match == 'true'
+          config: |
+            {
+              "bug": {
+                "require": ["bug"],
+                "message": "bug_message.md",
+                "close": false
+              },
+              "feature, not in scope": {
+                "require": ["out of scope"],
+                "message": "out_of_scope.md",
+                "close": true
+              }
+            }
+        id: "issue-autorespond"
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-        with:
-          respondableId: ${{ github.event.issue.node_id }}
-          shouldClose: ${{ true }}
-          author: ${{ github.event.issue.user.login }}
-          response: |
-            Thank you for taking the time to open this issue. The Manifold team reviewed this issue during our bi-weekly meeting and the consensus is that this request is not currently in keeping with our vision for the platform. We’re happy to continue discussing it, but for now we’re going to close the issue.
 
-            _This was an automated message, but please don't hesitate to reply. Our team watches these issues closely and will respond as soon as we're able to!_
 
-  auto-reply-feature-needs-funding:
-    runs-on: ubuntu-latest
 
-    steps:
-      - uses: "zdavis/issue-filter-action@master"
-        id: labels
-        with:
-          labels: "feature, needs funding"
-          type: "all"
-      - uses: zdavis/add-autoresponse@master
-        if: steps.labels.outputs.match == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-        with:
-          respondableId: ${{ github.event.issue.node_id }}
-          shouldClose: ${{ true }}
-          response: |
-            Thank you for taking the time to open this feature request. The Manifold team reviewed this issue during our bi-weekly meeting and the consensus is that this feature makes sense and is in keeping with our overall vision for the platform. That said, we don’t currently have funding available to support development of this feature. We’ve added a “needs funding” label to this feature request and closed it for now. This label signifies that should we find funding for this feature, or if the requestor wants to explore funding development, we’d be open to further discussion. It also means that we’re willing to accept pull requests that implement this feature.
 
-            _This was an automated message, but please don't hesitate to reply. Our team watches these issues closely and will respond as soon as we're able to!_
-          author: ${{ github.event.issue.user.login }}
-
-  auto-reply-feature-accepted:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: "zdavis/issue-filter-action@master"
-        id: labels
-        with:
-          labels: "feature, accepted"
-          type: "all"
-      - uses: zdavis/add-autoresponse@master
-        if: steps.labels.outputs.match == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-        with:
-          respondableId: ${{ github.event.issue.node_id }}
-          shouldClose: ${{ false }}
-          response: |
-            Thank you for taking the time to open this feature request. The Manifold team reviewed this issue during our bi-weekly meeting and the consensus is that this feature makes sense and is in keeping with our overall vision for the platform. Moreover, we see this request as a viable candidate for development under our current available funding. We’re adding an “accepted” label to this request to indicate that it’s within scope and possibly within budget.
-
-            The next step is for us to estimate the work involved with this and add it to our feature backlog. Our acceptance of the issue is not a promise that it will be implemented. We will balance this request against the other accepted requests and do our best to implement it within our current available funding.
-
-            _This was an automated message, but please don't hesitate to reply. Our team watches these issues closely and will respond as soon as we're able to!_
-          author: ${{ github.event.issue.user.login }}
-
-  auto-reply-feature-planned:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: "zdavis/issue-filter-action@master"
-        id: labels
-        with:
-          labels: "feature, planned"
-          type: "all"
-      - uses: zdavis/add-autoresponse@master
-        if: steps.labels.outputs.match == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-        with:
-          respondableId: ${{ github.event.issue.node_id }}
-          shouldClose: ${{ false }}
-          response: |
-            Thank you for taking the time to open this feature request. The Manifold team reviewed this issue during our bi-weekly meeting and the consensus is that this feature makes sense and is in keeping with our overall vision for the platform. Moreover, we see this request as a viable candidate for development under our current available funding. We’re adding an “accepted” label to this request to indicate that it’s within scope and possible within budget. We’re also adding a “planned” label to this feature to indicate that we are planning on completing it within our current funding cycle.
-
-            _This was an automated message, but please don't hesitate to reply. Our team watches these issues closely and will respond as soon as we're able to!_
-          author: ${{ github.event.issue.user.login }}
+#  auto-reply-out-of-scope:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: "zdavis/issue-filter-action@master"
+#        id: labels
+#        with:
+#          labels: "out of scope"
+#          type: "all"
+#      - uses: zdavis/add-autoresponse@master
+#        if: steps.labels.outputs.match == 'true'
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+#        with:
+#          respondableId: ${{ github.event.issue.node_id }}
+#          shouldClose: ${{ true }}
+#          author: ${{ github.event.issue.user.login }}
+#          response: |
+#            Thank you for taking the time to open this issue. The Manifold team reviewed this issue during our bi-weekly meeting and the consensus is that this request is not currently in keeping with our vision for the platform. We’re happy to continue discussing it, but for now we’re going to close the issue.
+#
+#            _This was an automated message, but please don't hesitate to reply. Our team watches these issues closely and will respond as soon as we're able to!_
+#
+#  auto-reply-feature-needs-funding:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: "zdavis/issue-filter-action@master"
+#        id: labels
+#        with:
+#          labels: "feature, needs funding"
+#          type: "all"
+#      - uses: zdavis/add-autoresponse@master
+#        if: steps.labels.outputs.match == 'true'
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+#        with:
+#          respondableId: ${{ github.event.issue.node_id }}
+#          shouldClose: ${{ true }}
+#          response: |
+#            Thank you for taking the time to open this feature request. The Manifold team reviewed this issue during our bi-weekly meeting and the consensus is that this feature makes sense and is in keeping with our overall vision for the platform. That said, we don’t currently have funding available to support development of this feature. We’ve added a “needs funding” label to this feature request and closed it for now. This label signifies that should we find funding for this feature, or if the requestor wants to explore funding development, we’d be open to further discussion. It also means that we’re willing to accept pull requests that implement this feature.
+#
+#            _This was an automated message, but please don't hesitate to reply. Our team watches these issues closely and will respond as soon as we're able to!_
+#          author: ${{ github.event.issue.user.login }}
+#
+#  auto-reply-feature-accepted:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: "zdavis/issue-filter-action@master"
+#        id: labels
+#        with:
+#          labels: "feature, accepted"
+#          type: "all"
+#      - uses: zdavis/add-autoresponse@master
+#        if: steps.labels.outputs.match == 'true'
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+#        with:
+#          respondableId: ${{ github.event.issue.node_id }}
+#          shouldClose: ${{ false }}
+#          response: |
+#            Thank you for taking the time to open this feature request. The Manifold team reviewed this issue during our bi-weekly meeting and the consensus is that this feature makes sense and is in keeping with our overall vision for the platform. Moreover, we see this request as a viable candidate for development under our current available funding. We’re adding an “accepted” label to this request to indicate that it’s within scope and possibly within budget.
+#
+#            The next step is for us to estimate the work involved with this and add it to our feature backlog. Our acceptance of the issue is not a promise that it will be implemented. We will balance this request against the other accepted requests and do our best to implement it within our current available funding.
+#
+#            _This was an automated message, but please don't hesitate to reply. Our team watches these issues closely and will respond as soon as we're able to!_
+#          author: ${{ github.event.issue.user.login }}
+#
+#  auto-reply-feature-planned:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: "zdavis/issue-filter-action@master"
+#        id: labels
+#        with:
+#          labels: "feature, planned"
+#          type: "all"
+#      - uses: zdavis/add-autoresponse@master
+#        if: steps.labels.outputs.match == 'true'
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+#        with:
+#          respondableId: ${{ github.event.issue.node_id }}
+#          shouldClose: ${{ false }}
+#          response: |
+#            Thank you for taking the time to open this feature request. The Manifold team reviewed this issue during our bi-weekly meeting and the consensus is that this feature makes sense and is in keeping with our overall vision for the platform. Moreover, we see this request as a viable candidate for development under our current available funding. We’re adding an “accepted” label to this request to indicate that it’s within scope and possible within budget. We’re also adding a “planned” label to this feature to indicate that we are planning on completing it within our current funding cycle.
+#
+#            _This was an automated message, but please don't hesitate to reply. Our team watches these issues closely and will respond as soon as we're able to!_
+#          author: ${{ github.event.issue.user.login }}
