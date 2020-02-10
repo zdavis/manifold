@@ -8,7 +8,7 @@ jobs:
   issue-auto-reply:
     runs-on: ubuntu-latest
     steps:
-      - uses: "ManifoldScholar/issue-autorespond-action@dev"
+      - uses: "ManifoldScholar/issue-autorespond-action@master"
         id: "issue-autorespond"
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
