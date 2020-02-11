@@ -31,7 +31,7 @@ jobs:
               {
                 "name": "in-scope-needs-funding",
                 "require": ["feature", "needs funding"],
-                "without": ["accepted', "planned"],
+                "without": ["accepted", "planned"],
                 "source": "master:.github/workflows/responses/in_scope_needs_funding.md",
                 "close": true
               },
