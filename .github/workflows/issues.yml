@@ -13,6 +13,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
         with:
+          authorized: |
+            ["zdavisZZZ"]
           config: |
             [
               {
