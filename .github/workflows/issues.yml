@@ -17,7 +17,7 @@ jobs:
             [
               {
                 "name": "bug-accepted",
-                "require": ["bug", "accepted"],
+                "require": ["bug", "planned"],
                 "source": "master:.github/workflows/responses/bug_accepted.md",
                 "close": false
               },
@@ -36,7 +36,7 @@ jobs:
               },
               {
                 "name": "in-scope-planned",
-                "require": ["feature", "accepted", "planned"],
+                "require": ["feature", "planned"],
                 "source": "master:.github/workflows/responses/in_scope_planned.md",
                 "close": false
               },
