@@ -1,8 +1,8 @@
 name: Issue Autoresponder
 # This workflow is triggered on pushes to the repository.
 on:
-  issues:
-    types: [labeled]
+  issue_comment:
+    types: [created]
 
 jobs:
   issue-auto-reply:
