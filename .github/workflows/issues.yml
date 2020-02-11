@@ -16,31 +16,31 @@ jobs:
           config: |
             [
               {
-                "name": "bug",
+                "cmd": "bug",
                 "labels": ["bug", "planned"],
                 "source": "master:.github/workflows/responses/bug_accepted.md",
                 "close": false
               },
               {
-                "name": "accept",
+                "cmd": "accept",
                 "labels": ["feature", "accepted"],
                 "source": "master:.github/workflows/responses/in_scope_accepted.md",
                 "close": false
               },
               {
-                "name": "funding",
+                "cmd": "funding",
                 "require": ["feature", "needs funding"],
                 "source": "master:.github/workflows/responses/in_scope_needs_funding.md",
                 "close": true
               },
               {
-                "name": "planned",
+                "cmd": "planned",
                 "require": ["feature", "planned"],
                 "source": "master:.github/workflows/responses/in_scope_planned.md",
                 "close": false
               },
               {
-                "name": "reject",
+                "cmd": "reject",
                 "require": ["out of scope"],
                 "source": "master:.github/workflows/responses/out_of_scope.md",
                 "close": true
