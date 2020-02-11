@@ -18,7 +18,7 @@ jobs:
               {
                 "name": "bug",
                 "require": ["bug"],
-                "message": "bug_message.md",
+                "message": ".github/workflows/responses/bug.md",
                 "close": false
               },
               {
