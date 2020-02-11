@@ -1,4 +1,4 @@
-name: Issue Autoresponder
+name: Bot Holla Back
 # This workflow is triggered on pushes to the repository.
 on:
   issue_comment:
@@ -16,32 +16,31 @@ jobs:
           config: |
             [
               {
-                "name": "bug-accepted",
-                "require": ["bug", "planned"],
+                "name": "bug",
+                "labels": ["bug", "planned"],
                 "source": "master:.github/workflows/responses/bug_accepted.md",
                 "close": false
               },
               {
-                "name": "in-scope-accepted",
-                "require": ["feature", "accepted"],
-                "without": ["planned"],
+                "name": "accept",
+                "labels": ["feature", "accepted"],
                 "source": "master:.github/workflows/responses/in_scope_accepted.md",
                 "close": false
               },
               {
-                "name": "in-scope-needs-funding",
+                "name": "funding",
                 "require": ["feature", "needs funding"],
                 "source": "master:.github/workflows/responses/in_scope_needs_funding.md",
                 "close": true
               },
               {
-                "name": "in-scope-planned",
+                "name": "planned",
                 "require": ["feature", "planned"],
                 "source": "master:.github/workflows/responses/in_scope_planned.md",
                 "close": false
               },
               {
-                "name": "out-of-scope",
+                "name": "reject",
                 "require": ["out of scope"],
                 "source": "master:.github/workflows/responses/out_of_scope.md",
                 "close": true
