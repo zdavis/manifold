@@ -18,13 +18,13 @@ jobs:
               {
                 "name": "bug",
                 "require": ["bug"],
-                "message": ".github/workflows/responses/bug.md",
+                "source": "master:.github/workflows/responses/bug.md",
                 "close": false
               },
               {
                 "name": "feature, not in scope",
                 "require": ["out of scope"],
-                "message": "out_of_scope.md",
+                "source": "master:.github/workflows/responses/out_of_scope.md",
                 "close": true
               }
             ]
