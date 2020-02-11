@@ -18,31 +18,31 @@ jobs:
               {
                 "cmd": "bug",
                 "labels": ["bug", "planned"],
-                "source": "master:.github/workflows/responses/bug_accepted.md",
+                "message": "master:.github/workflows/responses/bug_accepted.md",
                 "close": false
               },
               {
                 "cmd": "accept",
                 "labels": ["feature", "accepted"],
-                "source": "master:.github/workflows/responses/in_scope_accepted.md",
+                "message": "master:.github/workflows/responses/in_scope_accepted.md",
                 "close": false
               },
               {
                 "cmd": "funding",
-                "require": ["feature", "needs funding"],
-                "source": "master:.github/workflows/responses/in_scope_needs_funding.md",
+                "labels": ["feature", "needs funding"],
+                "message": "master:.github/workflows/responses/in_scope_needs_funding.md",
                 "close": true
               },
               {
                 "cmd": "planned",
-                "require": ["feature", "planned"],
-                "source": "master:.github/workflows/responses/in_scope_planned.md",
+                "labels": ["feature", "planned"],
+                "message": "master:.github/workflows/responses/in_scope_planned.md",
                 "close": false
               },
               {
                 "cmd": "reject",
-                "require": ["out of scope"],
-                "source": "master:.github/workflows/responses/out_of_scope.md",
+                "labels": ["out of scope"],
+                "message": "master:.github/workflows/responses/out_of_scope.md",
                 "close": true
               }
             ]
